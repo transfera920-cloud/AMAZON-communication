@@ -1,6 +1,6 @@
 # 國家公園登山步道・手機通訊點位查詢
 
-本專案由「**[亞馬遜國家山岳協會](https://amazon-hike.com/)**」維護與發布，為登山山友提供玉山國家公園、雪霸國家公園與太魯閣國家公園登山步道之手機通訊點位彙整、WGS84／TWD97 座標查詢、互動式地圖瀏覽與 CSV 匯出功能。
+本專案由「**[亞馬遜國家山岳協會](https://amazon-hike.com/)**」維護與發布，正式發布網址為 `https://amazon-hike.com/tool25/`。為廣大登山山友提供玉山國家公園、雪霸國家公園與太魯閣國家公園登山步道之手機通訊點位彙整、WGS84／TWD97 座標查詢、互動式多圖層地圖瀏覽與 CSV 匯出功能。
 
 ---
 
@@ -8,10 +8,13 @@
 
 ```
 .
-├── index.html                 # 繁體中文網頁進入點與 SEO Meta 標籤設定
-├── package.json               # 專案相依套件與建置指令
-├── vite.config.ts             # Vite 設定（設定 base: './' 確保靜態部署無誤）
+├── index.html                 # 繁體中文網頁進入點、完整 SEO Meta、Canonical 與 JSON-LD 結構化資料
+├── package.json               # 專案相依套件與 "build": "vite build"
+├── vite.config.ts             # Vite 設定（base: '/tool25/', outDir: 'dist/tool25'）
 ├── tsconfig.json              # TypeScript 編譯設定
+├── public/
+│   ├── robots.txt             # 搜尋引擎檢索指令與 Sitemap 路徑
+│   └── sitemap.xml            # Sitemap 網站地圖
 ├── src/
 │   ├── main.tsx               # React 根節點渲染進入點
 │   ├── index.css              # Tailwind CSS 與 Leaflet 樣式調校
@@ -20,11 +23,12 @@
 │   ├── data/
 │   │   └── communication_points.json  # 494 筆國家公園通訊點位原始資料庫
 │   ├── components/
-│   │   ├── Header.tsx         # 頁首品牌標題與亞馬遜國家山岳協會超連結
-│   │   ├── Footer.tsx         # 頁尾安全聲明、免責叮嚀與版權宣告
+│   │   ├── Header.tsx         # 頁首品牌標題與同網域內部超連結
+│   │   ├── Footer.tsx         # 頁尾安全聲明、免責叮嚀與同網域內部超連結
 │   │   ├── FilterPanel.tsx    # 國家公園、步道系統、步道、清單、dBm與關鍵字篩選面板
 │   │   ├── ListView.tsx       # 依國家公園與步道分組之響應式卡片清單、座標複製與展開
-│   │   └── MapView.tsx        # Leaflet + OpenStreetMap 圓點標記地圖與圖例
+│   │   ├── MapView.tsx        # Leaflet 互動地圖（支援臺灣通用電子地圖、OSM、衛星、等高線多圖層）
+│   │   └── AboutSection.tsx   # 供爬蟲與山友索引之語意化內容（工具簡介、動態涵蓋範圍、使用方式、FAQ、延伸閱讀）
 │   └── utils/
 │       ├── csvExport.ts       # UTF-8 BOM 格式 CSV 匯出（支援 Excel 中文不亂碼）
 │       └── urlParams.ts       # 篩選條件與 URL Query String 即時雙向同步
@@ -45,29 +49,23 @@ npm install
 ```bash
 npm run dev
 ```
-啟動後於瀏覽器開啟 `http://localhost:3000` 即可預覽。
+啟動後於瀏覽器開啟 `http://localhost:3000/tool25/` 即可預覽。
 
 ### 3. 本機建置測試
 ```bash
 npm run build
 ```
-建置輸出檔案將產生於 `dist/` 資料夾中。
+建置輸出檔案將產生於 `dist/tool25/` 資料夾中（包含 `dist/tool25/index.html` 與 `dist/tool25/assets/`）。
 
 ---
 
-## Cloudflare Pages 部署設定
+## Cloudflare Pages / 子目錄部署設定
 
-本專案為 100% 純前端靜態網站（Vite + React + TypeScript），無任何後端或伺服器端路由，非常適合直接部署至 Cloudflare Pages：
+本專案為 100% 純前端靜態網站（Vite + React + TypeScript），無任何後端或伺服器端路由：
 
-1. 將本專案推送（Push）至 GitHub 儲存庫。
-2. 登入 **Cloudflare Dashboard**，進入 **Workers & Pages** > **Create application** > **Pages** > **Connect to Git**。
-3. 選取該專案儲存庫，並設定以下建置參數：
-   - **Framework preset**: `Vite`
-   - **Build command**: `npm run build`
-   - **Build output directory**: `dist`
-4. 於 **Environment variables (環境變數)** 中新增：
-   - `NODE_VERSION`: `20`
-5. 點擊 **Save and Deploy**，即可自動完成建置並獲取全域 CDN 網址。
+- **子目錄基礎路徑**：`base: '/tool25/'`
+- **建置輸出資料夾**：`dist/tool25`
+- **靜態檔案輸出**：`dist/tool25/index.html`、`dist/tool25/assets/`、`dist/tool25/sitemap.xml`、`dist/tool25/robots.txt`
 
 ---
 

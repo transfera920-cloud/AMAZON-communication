@@ -6,6 +6,7 @@ import { Footer } from './components/Footer.tsx';
 import { FilterPanel } from './components/FilterPanel.tsx';
 import { ListView } from './components/ListView.tsx';
 import { MapView } from './components/MapView.tsx';
+import { AboutSection } from './components/AboutSection.tsx';
 import { exportToCsv } from './utils/csvExport.ts';
 import { parseFiltersFromUrl, syncFiltersToUrl } from './utils/urlParams.ts';
 import { Download, List, Map as MapIcon, RotateCcw } from 'lucide-react';
@@ -272,6 +273,9 @@ export default function App() {
             <MapView points={filteredPoints} />
           )}
         </section>
+
+        {/* Informative SEO and Crawlable Content Section */}
+        <AboutSection points={allPoints} />
       </main>
 
       <Footer />

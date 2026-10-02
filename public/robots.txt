@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://amazon-hike.com/tool25/sitemap.xml

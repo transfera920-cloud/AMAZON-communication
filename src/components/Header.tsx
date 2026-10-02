@@ -14,14 +14,11 @@ export const Header: React.FC = () => {
             <div>
               <a
                 href="https://amazon-hike.com/"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="group block"
-                aria-label="前往亞馬遜國家山岳協會官方網站（開新分頁）"
+                aria-label="前往亞馬遜國家山岳協會官方網站"
               >
                 <div className="inline-flex items-center gap-1.5 text-base font-bold tracking-tight text-white transition-colors group-hover:text-emerald-300 sm:text-lg">
                   <span>亞馬遜國家山岳協會</span>
-                  <ExternalLink className="h-3.5 w-3.5 opacity-70 group-hover:opacity-100" aria-hidden="true" />
                 </div>
                 <div className="text-xs tracking-wider text-stone-400 group-hover:text-stone-300 transition-colors">
                   AMAZON ALPINE ASSOCIATION

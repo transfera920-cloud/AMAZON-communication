@@ -13,13 +13,10 @@ export const Footer: React.FC = () => {
               </span>
               <a
                 href="https://amazon-hike.com/"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-base font-bold text-white hover:text-emerald-300 transition-colors"
-                aria-label="前往亞馬遜國家山岳協會官方網站（開新分頁）"
+                aria-label="前往亞馬遜國家山岳協會官方網站"
               >
                 <span>亞馬遜國家山岳協會</span>
-                <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
               </a>
             </div>
             <p className="text-xs text-stone-400">
