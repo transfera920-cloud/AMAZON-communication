@@ -1,0 +1,6 @@
+{
+  "name": "國家公園登山步道手機通訊點位查詢",
+  "description": "提供玉山、雪霸、太魯閣等國家公園登山步道之手機通訊點位查詢，支援依國家公園、步道系統、步道名稱、清單類別與訊號強度即時篩選，並提供 WGS84 與 TWD97 座標、互動地圖及 CSV 匯出功能。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
