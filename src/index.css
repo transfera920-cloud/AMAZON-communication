@@ -11,8 +11,9 @@
   margin: 0.75rem 1rem;
 }
 
-/* Ensure map touch handling is smooth on mobile */
+/* Ensure map touch handling is smooth on mobile and offline background */
 .leaflet-container {
   touch-action: pan-x pan-y;
   font-family: inherit;
+  background-color: #e7e5e4;
 }

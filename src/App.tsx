@@ -3,6 +3,7 @@ import rawData from './data/communication_points.json';
 import { CommunicationPoint, FilterState } from './types.ts';
 import { Header } from './components/Header.tsx';
 import { Footer } from './components/Footer.tsx';
+import { OfflineStatus } from './components/OfflineStatus.tsx';
 import { FilterPanel } from './components/FilterPanel.tsx';
 import { ListView } from './components/ListView.tsx';
 import { MapView } from './components/MapView.tsx';
@@ -174,6 +175,7 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-stone-100 font-sans text-stone-900">
       <Header />
+      <OfflineStatus />
 
       <main className="flex-1 mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8 space-y-6">
         {/* Filters Section */}

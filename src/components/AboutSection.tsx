@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { CommunicationPoint } from '../types.ts';
-import { Compass, BookOpen, HelpCircle, MapPin, CheckCircle2 } from 'lucide-react';
+import { Compass, BookOpen, HelpCircle, MapPin, CheckCircle2, WifiOff } from 'lucide-react';
 
 interface AboutSectionProps {
   points: CommunicationPoint[];
@@ -217,6 +217,45 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ points }) => {
             <span className="text-stone-500 text-xs sm:text-sm ml-2">（掌握等高線判讀、指北針使用與迷途防範應變原則）</span>
           </li>
         </ul>
+      </div>
+
+      {/* 6. 離線使用說明 */}
+      <div>
+        <div className="flex items-center gap-2 border-b border-stone-200 pb-3">
+          <span className="flex h-7 w-7 items-center justify-center rounded-md bg-emerald-700 text-white">
+            <WifiOff className="h-4 w-4" aria-hidden="true" />
+          </span>
+          <h2 className="text-xl font-bold tracking-tight text-stone-900 sm:text-2xl">
+            離線使用說明
+          </h2>
+        </div>
+        <div className="mt-4 rounded-lg border border-stone-200 bg-stone-50 p-4 sm:p-5 text-sm sm:text-base text-stone-700 space-y-3">
+          <p className="leading-relaxed">
+            本工具支援 PWA 離線應用技術，方便山友在深山無行動通訊網路環境下仍可隨時查閱通訊座標。<strong>出發前請先做好以下三件事：</strong>
+          </p>
+          <ol className="list-decimal list-inside space-y-2 pl-0.5 text-stone-800 leading-relaxed">
+            <li>
+              <strong>連網確認快取就緒：</strong>在有網路環境開啟本頁，等網頁上方狀態列顯示「<strong>✓ 已可離線使用</strong>」（程式與資料已存入裝置）。
+            </li>
+            <li>
+              <strong>地圖放大預覽步道：</strong>在地圖檢視上放大、移動瀏覽預定前往的步道與周邊山區（<strong>只有事先看過的區域，離線時才會儲存底圖</strong>）。
+            </li>
+            <li>
+              <strong>安裝至手機或電腦：</strong>利用瀏覽器「加入主畫面」或「安裝到此裝置」，日後登山無訊號時可一鍵快速開啟。
+            </li>
+          </ol>
+          <div className="pt-2 border-t border-stone-200/80 space-y-1.5 text-stone-600 text-xs sm:text-sm leading-relaxed">
+            <p>
+              • <strong>離線可用功能：</strong>山區離線時，通訊點位彩色圓點、座標數據、清單瀏覽、篩選與 CSV 匯出皆可正常使用；未預先瀏覽過的地圖區域底圖將顯示為淺灰空白底色。
+            </p>
+            <p>
+              • <strong>網站更新方式：</strong>若網站或點位資料更新，請重新連網開啟本頁兩次即可取得最新版本。
+            </p>
+            <p className="text-amber-800 font-medium">
+              • <strong>安全叮嚀：</strong>離線功能僅作為出發前通訊點位備查，切勿依賴手機訊號作為唯一求救管道，入山務必備妥雙向衛星通訊設備（如 inReach）、傳統指北針與紙本地圖。
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );

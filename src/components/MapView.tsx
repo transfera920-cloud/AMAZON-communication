@@ -34,11 +34,15 @@ export const MapView: React.FC<MapViewProps> = ({ points }) => {
         zoomControl: true,
       });
 
+      const transparent1x1 =
+        'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+
       // 1. OpenStreetMap
       const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> 貢獻者',
         maxZoom: 19,
+        errorTileUrl: transparent1x1,
       });
 
       // 2. 臺灣通用電子地圖 (NLSC)
@@ -48,6 +52,7 @@ export const MapView: React.FC<MapViewProps> = ({ points }) => {
           attribution:
             '&copy; <a href="https://maps.nlsc.gov.tw/" target="_blank" rel="noopener noreferrer">國土測繪圖資服務雲</a>',
           maxZoom: 19,
+          errorTileUrl: transparent1x1,
         }
       );
 
@@ -58,6 +63,7 @@ export const MapView: React.FC<MapViewProps> = ({ points }) => {
           attribution:
             '&copy; <a href="https://www.esri.com/" target="_blank" rel="noopener noreferrer">Esri, Maxar</a>',
           maxZoom: 18,
+          errorTileUrl: transparent1x1,
         }
       );
 
@@ -66,6 +72,7 @@ export const MapView: React.FC<MapViewProps> = ({ points }) => {
         attribution:
           '&copy; <a href="https://opentopomap.org" target="_blank" rel="noopener noreferrer">OpenTopoMap</a>',
         maxZoom: 17,
+        errorTileUrl: transparent1x1,
       });
 
       // Default active base layer: 臺灣通用電子地圖 (若載入失敗亦可切換至 OSM)
@@ -173,7 +180,7 @@ export const MapView: React.FC<MapViewProps> = ({ points }) => {
       {/* Map Canvas */}
       <div
         ref={mapContainerRef}
-        className="h-[62vh] min-h-[480px] w-full z-0"
+        className="h-[62vh] min-h-[480px] w-full z-0 bg-[#e7e5e4]"
         aria-label="手機通訊點位互動地圖"
       />
 
