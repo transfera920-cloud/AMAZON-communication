@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { CommunicationPoint } from '../types.ts';
-import { MapPin, Layers } from 'lucide-react';
+import { MapPin, Layers, ChevronDown } from 'lucide-react';
 
 interface MapViewProps {
   points: CommunicationPoint[];
@@ -21,6 +21,14 @@ export const MapView: React.FC<MapViewProps> = ({ points }) => {
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
   const layerGroupRef = useRef<L.LayerGroup | null>(null);
+
+  // On mobile (screen width < 640px), default legend to collapsed so it does not block the map
+  const [isLegendOpen, setIsLegendOpen] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth >= 640;
+    }
+    return false;
+  });
 
   // Initialize map and tile layer choices
   useEffect(() => {
@@ -184,38 +192,69 @@ export const MapView: React.FC<MapViewProps> = ({ points }) => {
         aria-label="手機通訊點位互動地圖"
       />
 
-      {/* Floating Legend */}
-      <div className="absolute top-3 right-3 z-[1000] rounded-lg border border-stone-200/90 bg-white/95 p-3 shadow-md backdrop-blur-xs text-xs text-stone-700">
-        <h4 className="font-bold text-stone-900 mb-2 border-b border-stone-100 pb-1">
-          國家公園圖例
-        </h4>
-        <div className="space-y-1.5">
-          <div className="flex items-center gap-2">
-            <span
-              className="h-3 w-3 rounded-full shrink-0 border border-white shadow-xs"
-              style={{ backgroundColor: PARK_COLORS['玉山國家公園'] }}
-            />
-            <span className="font-medium">玉山國家公園</span>
+      {/* Floating Collapsible Legend */}
+      <div className="absolute top-3 right-3 z-[1000] overflow-hidden rounded-lg border border-stone-200/90 bg-white/95 shadow-md backdrop-blur-xs text-xs text-stone-700 transition-all duration-200">
+        <button
+          type="button"
+          onClick={() => setIsLegendOpen((prev) => !prev)}
+          className="flex w-full items-center justify-between gap-2.5 px-3 py-2 font-bold text-stone-900 hover:text-emerald-800 transition-colors select-none"
+          aria-expanded={isLegendOpen}
+          aria-label={isLegendOpen ? '收合國家公園圖例' : '展開國家公園圖例'}
+        >
+          <span className="flex items-center gap-1.5">
+            <span className="flex -space-x-1" aria-hidden="true">
+              <span
+                className="inline-block h-2.5 w-2.5 rounded-full border border-white"
+                style={{ backgroundColor: PARK_COLORS['玉山國家公園'] }}
+              />
+              <span
+                className="inline-block h-2.5 w-2.5 rounded-full border border-white"
+                style={{ backgroundColor: PARK_COLORS['雪霸國家公園'] }}
+              />
+              <span
+                className="inline-block h-2.5 w-2.5 rounded-full border border-white"
+                style={{ backgroundColor: PARK_COLORS['太魯閣國家公園'] }}
+              />
+            </span>
+            <span className="text-xs">國家公園圖例</span>
+          </span>
+          <ChevronDown
+            className={`h-4 w-4 text-stone-500 transition-transform duration-200 ${
+              isLegendOpen ? 'rotate-180' : ''
+            }`}
+            aria-hidden="true"
+          />
+        </button>
+
+        {isLegendOpen && (
+          <div className="border-t border-stone-100 px-3 pb-3 pt-2 space-y-1.5">
+            <div className="flex items-center gap-2">
+              <span
+                className="h-3 w-3 rounded-full shrink-0 border border-white shadow-xs"
+                style={{ backgroundColor: PARK_COLORS['玉山國家公園'] }}
+              />
+              <span className="font-medium text-stone-800">玉山國家公園</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span
+                className="h-3 w-3 rounded-full shrink-0 border border-white shadow-xs"
+                style={{ backgroundColor: PARK_COLORS['雪霸國家公園'] }}
+              />
+              <span className="font-medium text-stone-800">雪霸國家公園</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span
+                className="h-3 w-3 rounded-full shrink-0 border border-white shadow-xs"
+                style={{ backgroundColor: PARK_COLORS['太魯閣國家公園'] }}
+              />
+              <span className="font-medium text-stone-800">太魯閣國家公園</span>
+            </div>
+            <div className="mt-2 pt-2 border-t border-stone-100 text-[10px] text-stone-400 flex items-center gap-1">
+              <Layers className="h-3 w-3" />
+              <span>左上角可切換圖層</span>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <span
-              className="h-3 w-3 rounded-full shrink-0 border border-white shadow-xs"
-              style={{ backgroundColor: PARK_COLORS['雪霸國家公園'] }}
-            />
-            <span className="font-medium">雪霸國家公園</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span
-              className="h-3 w-3 rounded-full shrink-0 border border-white shadow-xs"
-              style={{ backgroundColor: PARK_COLORS['太魯閣國家公園'] }}
-            />
-            <span className="font-medium">太魯閣國家公園</span>
-          </div>
-        </div>
-        <div className="mt-2 pt-2 border-t border-stone-100 text-[10px] text-stone-400 flex items-center gap-1">
-          <Layers className="h-3 w-3" />
-          <span>左上角可切換圖層</span>
-        </div>
+        )}
       </div>
 
       {/* Empty State Overlay */}
