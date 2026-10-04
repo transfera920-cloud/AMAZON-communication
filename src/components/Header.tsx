@@ -28,6 +28,21 @@ export const Header: React.FC = () => {
           </div>
         </div>
 
+        {/* Breadcrumb：與 JSON-LD BreadcrumbList 一致（首頁 › 登山工具 › 本工具） */}
+        <nav aria-label="麵包屑" className="mt-3 text-xs text-stone-400">
+          <ol className="flex flex-wrap items-center gap-1.5">
+            <li>
+              <a href="https://amazon-hike.com/" className="hover:text-emerald-300 transition-colors">亞馬遜國家山岳協會</a>
+            </li>
+            <li aria-hidden="true">›</li>
+            <li>
+              <a href="https://amazon-hike.com/tools" className="hover:text-emerald-300 transition-colors">登山工具</a>
+            </li>
+            <li aria-hidden="true">›</li>
+            <li aria-current="page" className="text-stone-300">手機通訊點位查詢</li>
+          </ol>
+        </nav>
+
         {/* Page Title */}
         <div className="mt-4 border-t border-stone-800/90 pt-3">
           <h1 className="text-xl font-bold tracking-tight text-white sm:text-2xl md:text-3xl">

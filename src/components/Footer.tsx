@@ -22,6 +22,11 @@ export const Footer: React.FC = () => {
             <p className="text-xs text-stone-400">
               致力於推廣安全登山、無痕山林與山岳環境永續保護。
             </p>
+            <p className="text-xs">
+              <a href="https://amazon-hike.com/tools" className="text-emerald-400 hover:text-emerald-300 underline underline-offset-4">更多登山工具與氣象服務</a>
+              <span className="mx-1.5 text-stone-600">・</span>
+              <a href="https://amazon-hike.com/intro" className="text-emerald-400 hover:text-emerald-300 underline underline-offset-4">登山入門指南</a>
+            </p>
           </div>
 
           <div className="max-w-xl rounded-lg border border-amber-900/50 bg-stone-800/80 p-3.5 text-xs text-stone-300">

@@ -55,6 +55,23 @@
           "url": "https://amazon-hike.com/"
         },
         {
+          "@type": "WebSite",
+          "@id": "https://amazon-hike.com/#website",
+          "url": "https://amazon-hike.com/",
+          "name": "亞馬遜國家山岳協會",
+          "publisher": { "@id": "https://amazon-hike.com/#organization" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://amazon-hike.com/tool25/#webpage",
+          "url": "https://amazon-hike.com/tool25/",
+          "name": "國家公園登山步道手機通訊點位查詢",
+          "inLanguage": "zh-Hant",
+          "isPartOf": { "@id": "https://amazon-hike.com/#website" },
+          "breadcrumb": { "@id": "https://amazon-hike.com/tool25/#breadcrumb" },
+          "mainEntity": { "@id": "https://amazon-hike.com/tool25/#webapp" }
+        },
+        {
           "@type": "WebApplication",
           "@id": "https://amazon-hike.com/tool25/#webapp",
           "name": "國家公園登山步道手機通訊點位查詢",
@@ -64,7 +81,12 @@
           "operatingSystem": "Web",
           "inLanguage": "zh-Hant",
           "isAccessibleForFree": true,
+          "isPartOf": { "@id": "https://amazon-hike.com/#website" },
+          "mainEntityOfPage": { "@id": "https://amazon-hike.com/tool25/#webpage" },
           "publisher": {
+            "@id": "https://amazon-hike.com/#organization"
+          },
+          "provider": {
             "@id": "https://amazon-hike.com/#organization"
           }
         },
@@ -75,12 +97,18 @@
             {
               "@type": "ListItem",
               "position": 1,
-              "name": "首頁",
+              "name": "亞馬遜國家山岳協會",
               "item": "https://amazon-hike.com/"
             },
             {
               "@type": "ListItem",
               "position": 2,
+              "name": "登山工具",
+              "item": "https://amazon-hike.com/tools"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
               "name": "國家公園登山步道手機通訊點位查詢",
               "item": "https://amazon-hike.com/tool25/"
             }
@@ -98,6 +126,7 @@
           <p>
             本工具由亞馬遜國家山岳協會提供，彙整台灣三大國家公園（玉山國家公園、雪霸國家公園、太魯閣國家公園）登山步道之手機可通訊點位、WGS84 與 TWD97 座標資訊，供登山山友於出發前進行通訊備查與行前安全規劃。
           </p>
+          <nav aria-label="麵包屑"><a href="https://amazon-hike.com/">亞馬遜國家山岳協會</a> › <a href="https://amazon-hike.com/tools">登山工具</a> › 國家公園登山步道手機通訊點位查詢</nav>
           <p><strong>涵蓋園區：</strong>玉山國家公園、雪霸國家公園、太魯閣國家公園。</p>
           <p style="color: #065f46; font-weight: 600;">請開啟瀏覽器 JavaScript 功能，以完整體驗互動式圖資地圖、即時連動篩選與 CSV 匯出功能。</p>
         </div>
@@ -106,4 +135,3 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

@@ -200,7 +200,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ points }) => {
         <ul className="mt-4 space-y-2 text-sm sm:text-base">
           <li>
             <a
-              href="https://amazon-hike.com/chapter13/"
+              href="https://amazon-hike.com/chapter08/"
               className="text-emerald-800 hover:text-emerald-950 font-medium underline underline-offset-4 decoration-emerald-500/50 hover:decoration-emerald-800 transition-colors"
             >
               完整登山離線 GPX 軌跡載入與實務教學指南
@@ -209,12 +209,12 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ points }) => {
           </li>
           <li>
             <a
-              href="https://amazon-hike.com/chapter03/"
+              href="https://amazon-hike.com/chapter10/"
               className="text-emerald-800 hover:text-emerald-950 font-medium underline underline-offset-4 decoration-emerald-500/50 hover:decoration-emerald-800 transition-colors"
             >
-              登山地圖判讀與野外定位導航實戰指南
+              迷途自保 STOP 原則與山難求救 SOP
             </a>
-            <span className="text-stone-500 text-xs sm:text-sm ml-2">（掌握等高線判讀、指北針使用與迷途防範應變原則）</span>
+            <span className="text-stone-500 text-xs sm:text-sm ml-2">（山區訊號不穩時的迷途自保與正確報案求援步驟）</span>
           </li>
         </ul>
       </div>

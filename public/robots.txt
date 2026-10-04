@@ -1,3 +1,5 @@
+# 注意：爬蟲只會讀取網站根目錄的 https://amazon-hike.com/robots.txt，
+# 子目錄的 robots.txt 不會生效（Sitemap 宣告已移至根目錄 robots.txt）。
 User-agent: *
 Allow: /
 Sitemap: https://amazon-hike.com/tool25/sitemap.xml
