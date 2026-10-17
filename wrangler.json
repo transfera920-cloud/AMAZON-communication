@@ -1,9 +1,13 @@
 {
   "name": "amazon-communication",
   "compatibility_date": "2026-10-01",
+  "routes": [
+    { "pattern": "amazon-hike.com/tool17", "zone_name": "amazon-hike.com" },
+    { "pattern": "amazon-hike.com/tool17/*", "zone_name": "amazon-hike.com" }
+  ],
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "single-page-application"
+    "not_found_handling": "none"
   },
   "build": {
     "command": "npm run build"

@@ -4,12 +4,12 @@ const TILE_CACHE = `map-tiles-${CACHE_VERSION}`;
 const FONT_CACHE = `google-fonts-${CACHE_VERSION}`;
 const MAX_TILES = 500;
 
-// Install event: precache '/tool25/' and skip waiting
+// Install event: precache '/tool17/' and skip waiting
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches
       .open(STATIC_CACHE)
-      .then((cache) => cache.addAll(['/tool25/']))
+      .then((cache) => cache.addAll(['/tool17/']))
       .then(() => self.skipWaiting())
   );
 });
@@ -135,9 +135,9 @@ self.addEventListener('fetch', (event) => {
           return networkResponse;
         }
 
-        // If navigation request and offline/no cache, fallback to '/tool25/'
+        // If navigation request and offline/no cache, fallback to '/tool17/'
         if (event.request.mode === 'navigate') {
-          const fallback = await cache.match('/tool25/');
+          const fallback = await cache.match('/tool17/');
           if (fallback) {
             return fallback;
           }

@@ -27,7 +27,7 @@ export const OfflineStatus: React.FC = () => {
   // Accordion open state: defaults to true on first visit, then remembered in localStorage
   const [isOpen, setIsOpen] = useState(() => {
     try {
-      return localStorage.getItem('tool25_offline_hint_seen') !== '1';
+      return localStorage.getItem('tool17_offline_hint_seen') !== '1';
     } catch {
       return true;
     }
@@ -86,8 +86,8 @@ export const OfflineStatus: React.FC = () => {
 
     // Mark as seen so future visits default to collapsed
     try {
-      if (localStorage.getItem('tool25_offline_hint_seen') !== '1') {
-        localStorage.setItem('tool25_offline_hint_seen', '1');
+      if (localStorage.getItem('tool17_offline_hint_seen') !== '1') {
+        localStorage.setItem('tool17_offline_hint_seen', '1');
       }
     } catch {
       // Ignore localStorage errors
@@ -124,7 +124,7 @@ export const OfflineStatus: React.FC = () => {
   const handleToggle = (e: React.SyntheticEvent<HTMLDetailsElement>) => {
     setIsOpen(e.currentTarget.open);
     try {
-      localStorage.setItem('tool25_offline_hint_seen', '1');
+      localStorage.setItem('tool17_offline_hint_seen', '1');
     } catch {
       // Ignore localStorage errors
     }

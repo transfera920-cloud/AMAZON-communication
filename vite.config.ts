@@ -2,15 +2,25 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
+import {buildSeoBody} from './scripts/seoBody.mjs';
 
 export default defineConfig(() => {
   return {
-    base: '/tool25/',
+    base: '/tool17/',
     build: {
-      outDir: 'dist/tool25',
+      outDir: 'dist/tool17',
       emptyOutDir: true,
     },
-    plugins: [react(), tailwindcss()],
+    plugins: [
+      react(),
+      tailwindcss(),
+      {
+        name: 'seo-body',
+        transformIndexHtml(html: string) {
+          return html.replace('<!--SEO_BODY-->', () => buildSeoBody(__dirname));
+        },
+      },
+    ],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

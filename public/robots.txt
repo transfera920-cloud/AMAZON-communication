@@ -2,4 +2,4 @@
 # 子目錄的 robots.txt 不會生效（Sitemap 宣告已移至根目錄 robots.txt）。
 User-agent: *
 Allow: /
-Sitemap: https://amazon-hike.com/tool25/sitemap.xml
+Sitemap: https://amazon-hike.com/tool17/sitemap.xml
